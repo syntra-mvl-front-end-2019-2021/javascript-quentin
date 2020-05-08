@@ -1,8 +1,9 @@
 // Return the largest element of array (all elements will be numbers), e.g. [1,2,3] → 3
 function getLargestItemInArray(array) {
  //if + loop
+    let NewArray = new Array(array);
     let largestVal = 0 ;
-    for( let i = 0; i < array.length; i++){
+    for( let i = 0; i < NewArray.length; i++){
         if ( i >= largestVal){
             largestVal = i;
         }
@@ -12,21 +13,24 @@ function getLargestItemInArray(array) {
 
 // Reverse order of array, e.g. [1,2,3] → [3,2,1]
 function reverseArray(anArray) {
-    let newArray = anArray.reverse();
+    let array1 = new array(anArray);
+    let newArray = array1.reverse();
     return newArray;
 }
 
 // Make a sum of all elements, e.g. [1,2,3] → 6
 function arraySum(anArray) {
+    let array2 = new array(anArray);
     let sum = 0;
-    for (var i = 0; i < anArray.length; i++) {
-        sum += anArray[i];
+    for (var i = 0; i < array2.length; i++) {
+        sum += array2[i];
     };
 }
 
 // Make a string of the first letter of each element of array, e.g. ['Dog', 'cat', 'snake'] → 'Dcs'
 function stringOfFirstLetters(anArray) {
-    
+    let array3 = new array(anArray);
+    let newArray = array3.split("");
 }
 
 // Combines two arrays by alternatingly taking elements, e.g. [a,b,c], [1,2,3] → [a,1,b,2,c,3].

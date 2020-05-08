@@ -9,12 +9,19 @@ console.log(anArray[1]);
 anArray[2]= 10;
 console.log(anArray);
 
+console.log("join");
 console.log(anArray.join(' - '));
+
+console.log("push 2 into array");
 anArray.push(2);
 console.log(anArray);
 
+
+console.log("pop");
 anArray.pop();
 
+
+console.log("unshift");
 anArray.unshift(3, 4, 9);
 
 console.log(anArray);

@@ -20,10 +20,9 @@ function reverseArray(anArray) {
 
 // Make a sum of all elements, e.g. [1,2,3] → 6
 function arraySum(anArray) {
-    let array2 = new array(anArray);
     let sum = 0;
-    for (var i = 0; i < array2.length; i++) {
-        sum += array2[i];
+    for (var i = 0; i < anArray.length; i++) {
+        sum += anArray[i];
     };
 }
 

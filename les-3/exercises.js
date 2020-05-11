@@ -41,17 +41,21 @@ function stringOfFirstLetters(anArray) {
 
 // Combines two arrays by alternatingly taking elements, e.g. [a,b,c], [1,2,3] → [a,1,b,2,c,3].
 function combineArrays(arrayOne, arrayTwo) {
-    console.log(arrayOne,arrayTwo);
+    
     let ArraysCombined = [];
 
     for (let i = 0; i < arrayOne.Length; i++ ){
         ArraysCombined.push( arrayOne[i] , arrayTwo[i] );
     }
-    console.log(ArraysCombined);
+    return ArraysCombined;
 }
 
 // Takes a number and returns a list of its digits. e.g. 2342 → [2,3,4,2]
 function numberToDigitArray(aNumber) {
+
+    var digits = aNumber.toString().split('');
+    var realDigits = digits.map(Number)
+    return realDigits;
 
 }
 
@@ -61,6 +65,7 @@ function numberToDigitArray(aNumber) {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
 function translateToPigLating(aString) {
 
+    
 }
 
 // Converts English text to Morse code.

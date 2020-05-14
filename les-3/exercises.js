@@ -112,44 +112,103 @@ function translateToMorse(aString) {
             break;
     }
     */
-   let ArrayOfWords = aString.split( ' ' );
+   let EachWord = aString.split( ' ' );
    let newArrayOfLetters = [];
-   let newArray =[];
 
-   for ( let i = 0 ; i < ArrayOfWords.length ; i++ ){
+   for ( let i = 0 ; i < EachWord.length ; i++ ){
        
-        let SingleWord = ArrayOfWords[i];
-        let ALetter = SingleWord.split('');
+        EachWord = EachWord[i];
+        let ALetter = EachWord.split('');
 
        for ( let l = 0 ; l < ALetter.length ; l++ ){
             switch(ALetter[l]){
+                case 'a' :
+                    ALetter[l] = '*_';
+                    break;
+                case 'b' :
+                    ALetter[l] = '_***';
+                    break;
+                case 'c' :
+                    ALetter[l] = '_*_*';
+                    break;
+                case 'd' :
+                    ALetter[l] = '_**';
+                    break;
+                case 'e' :
+                    ALetter[l] = '*';
+                    break;
+                case 'f' :
+                    ALetter[l] = '**_*';
+                    break;
+                case 'g' :
+                    ALetter[l] = '__*';
+                    break;
                 case 'h' :
                 case 'H' : 
                     ALetter[l] = '****';
                     break;
-                case 'e' :
-                    ALetter[l] = '*' ;
+                case 'i' :
+                    ALetter[l] = '**' ;
+                    break;
+                case 'J' :
+                case 'j' :
+                    ALetter[l] = '*___' ;
+                    break;    
+                case 'k' :
+                    ALetter[l] = '_*_' ;
                     break;
                 case 'l' :
                     ALetter[l] = '*_**' ;
                     break;
+                case 'm' :
+                    ALetter[l] = '__' ;
+                    break;
+                case 'n' :
+                    ALetter[l] = '_*' ;
+                    break;
                 case 'o' :
                     ALetter[l] = '___';
+                    break;
+                case 'p' :
+                    ALetter[l] = '*__*' ;
+                    break;
+                case 'q' :
+                    ALetter[l] = '__*_' ;
+                    break;
+                case 'r' :
+                    ALetter[l] = '*_*' ;
+                    break;
+                case 'S' :
+                case 's' :
+                    ALetter[l] = '***' ;
+                    break;
+                case 't' :
+                    ALetter[l] = '_' ;
+                    break;
+                case 'u' :
+                    ALetter[l] = '**_' ;
+                    break;
+                case 'v' :
+                    ALetter[l] = '***_' ;
                     break;
                 case 'w' :
                 case 'W' :
                     ALetter[l] = '*__';
                     break;
-                case 'r' :
-                    ALetter[l] = '*_*';
+                case 'x' :
+                    ALetter[l] = '_**_';
                     break;
-                case 'd' :
-                    ALetter[l] = '_**' ;
+                case 'y' :
+                    ALetter[l] = '_*__' ;
+                    break;
+                case 'z' :
+                    ALetter[l] = '__**' ;
                     break;
             }
-            newArray.push(ALetter[l]);
+            EachWord = ALetter[l] + "|";
+            newArrayOfLetters.push(EachWord);
        }
-       console.log(newArray.join('|'));
+       return newArrayOfLetters.join("");
    }
    
 }

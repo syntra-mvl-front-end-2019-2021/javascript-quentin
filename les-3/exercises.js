@@ -65,7 +65,29 @@ function numberToDigitArray(aNumber) {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
 function translateToPigLating(aString) {
 
-    
+    // loop in loop
+    // first loop : for array : 
+    //              separate each word, loop in loop : 
+    //              (make variable of first letter),
+    //              take first letter and move it to the end + ay
+    let ArrayOfWords = aString.split( ' ' );
+    let newArray = [];
+
+    for ( let i = 0 ; i < ArrayOfWords.length ; i++ ){
+        //console.log(ArrayOfWords[i]);
+        let SingleWord = ArrayOfWords[i];
+        SingleWord.split('');
+
+        for ( let x = 0 ; x < 1 ; x++ ){
+
+            let FirstTwoLetters = SingleWord.slice( 0 , 1 );
+            let NewWord = SingleWord.slice(1);
+            let PigLatinWord = NewWord + FirstTwoLetters + "ay" ;
+
+            newArray.push(PigLatinWord);
+        }
+    }
+    return newArray.join(' ');
 }
 
 // Converts English text to Morse code.
@@ -90,6 +112,46 @@ function translateToMorse(aString) {
             break;
     }
     */
+   let ArrayOfWords = aString.split( ' ' );
+   let newArrayOfLetters = [];
+   let newArray =[];
+
+   for ( let i = 0 ; i < ArrayOfWords.length ; i++ ){
+       
+        let SingleWord = ArrayOfWords[i];
+        let ALetter = SingleWord.split('');
+
+       for ( let l = 0 ; l < ALetter.length ; l++ ){
+            switch(ALetter[l]){
+                case 'h' :
+                case 'H' : 
+                    ALetter[l] = '****';
+                    break;
+                case 'e' :
+                    ALetter[l] = '*' ;
+                    break;
+                case 'l' :
+                    ALetter[l] = '*_**' ;
+                    break;
+                case 'o' :
+                    ALetter[l] = '___';
+                    break;
+                case 'w' :
+                case 'W' :
+                    ALetter[l] = '*__';
+                    break;
+                case 'r' :
+                    ALetter[l] = '*_*';
+                    break;
+                case 'd' :
+                    ALetter[l] = '_**' ;
+                    break;
+            }
+            newArray.push(ALetter[l]);
+       }
+       console.log(newArray.join('|'));
+   }
+   
 }
 
 // Write a more advanced version of the previous function

@@ -41,13 +41,27 @@ function stringOfFirstLetters(anArray) {
 
 // Combines two arrays by alternatingly taking elements, e.g. [a,b,c], [1,2,3] → [a,1,b,2,c,3].
 function combineArrays(arrayOne, arrayTwo) {
-    
+
+    let result= [];
+    let longestLength = arrayOne.length > arrayTwo.length ? arrayOne.length : arrayTwo.length;
+
+    for (let i = 0; i < longestLength; i++){
+        if(arrayOne[i] !== undefined){
+            result.push(arrayOne[i]);
+        }
+        if(arrayTwo[i] !== undefined){
+            result.push(arrayTwo[i]);
+        }
+    }
+    /*
     let ArraysCombined = [];
+    let 
 
     for (let i = 0; i < arrayOne.Length; i++ ){
         ArraysCombined.push( arrayOne[i] , arrayTwo[i] );
     }
     return ArraysCombined;
+    */
 }
 
 // Takes a number and returns a list of its digits. e.g. 2342 → [2,3,4,2]

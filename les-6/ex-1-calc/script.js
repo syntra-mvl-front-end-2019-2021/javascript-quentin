@@ -24,30 +24,40 @@ function product(){
 let buttonProduct = document.getElementById('product-submit-btn');
 buttonProduct.addEventListener('click',product);
 
+let teller = 2;
 
 function addInput(){
 
-    let newInputFieldContainer = document.createElement('div');
-    newInputFieldContainer.setAttribute('class','field has-addons number-input-group' )
-    let newControl = document.createElement('div');
-    newControl.setAttribute('class', 'control');
-    let newControl2 = document.createElement('div');
-    newControl2.setAttribute('class', 'control');
-    let newInputField = document.createElement('input');
-    newInputField.setAttribute('class','input number-input');
-    newInputField.setAttribute('type','number');
-    newInputField.setAttribute('step',1);
-    newInputField.setAttribute('value',0);
-    let newDeleteButton = document.createElement('a');
-    newDeleteButton.setAttribute('class', 'button is-danger delete-number-input');
-    newDeleteButton.innerHTML = 'X';
-    
-    document.getElementById('input-container').appendChild(newInputFieldContainer);
-    newInputFieldContainer.appendChild(newControl);
-    newControl.appendChild(newInputField);
-    newInputFieldContainer.appendChild(newControl2);
-    newControl2.appendChild(newDeleteButton);
+    let InputFieldContainer = document.createElement('div');
+    InputFieldContainer.setAttribute('class','field has-addons number-input-group' )
+    let Control = document.createElement('div');
+    Control.setAttribute('class', 'control');
+    let Control2 = document.createElement('div');
+    Control2.setAttribute('class', 'control');
+    let InputField = document.createElement('input');
+    InputField.setAttribute('class','input number-input');
+    InputField.setAttribute('type','number');
+    InputField.setAttribute('step',1);
+    InputField.setAttribute('value',0);
+    let DeleteButton = document.createElement('a');
+    DeleteButton.setAttribute('class', 'button is-danger delete-number-input');
+    DeleteButton.innerHTML = 'X';
 
+    document.getElementById('input-container').appendChild(InputFieldContainer);
+    InputFieldContainer.appendChild(Control);
+    Control.appendChild(InputField);
+    InputFieldContainer.appendChild(Control2);
+    Control2.appendChild(DeleteButton);
+
+    let count = document.getElementById('number-count-container');
+    count.innerHTML = ++teller;
+
+    function deleteInput(){
+        count.innerHTML = --teller;
+        InputFieldContainer.remove();
+    }
+
+    DeleteButton.addEventListener('click',deleteInput);
     
 }
 
@@ -70,3 +80,5 @@ let buttonAddInput = document.getElementById('add-input-btn');
 buttonAddInput.addEventListener('click',addInput);
 
 */
+
+

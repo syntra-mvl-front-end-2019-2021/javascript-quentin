@@ -25,6 +25,34 @@ let buttonProduct = document.getElementById('product-submit-btn');
 buttonProduct.addEventListener('click',product);
 
 
+function addInput(){
+
+    let newInputFieldContainer = document.createElement('div');
+    newInputFieldContainer.setAttribute('class','field has-addons number-input-group' )
+    let newControl = document.createElement('div');
+    newControl.setAttribute('class', 'control');
+    let newControl2 = document.createElement('div');
+    newControl2.setAttribute('class', 'control');
+    let newInputField = document.createElement('input');
+    newInputField.setAttribute('class','input number-input');
+    newInputField.setAttribute('type','number');
+    newInputField.setAttribute('step',1);
+    newInputField.setAttribute('value',0);
+    let newDeleteButton = document.createElement('a');
+    newDeleteButton.setAttribute('class', 'button is-danger delete-number-input');
+    newDeleteButton.innerHTML = 'X';
+    
+    document.getElementById('input-container').appendChild(newInputFieldContainer);
+    newInputFieldContainer.appendChild(newControl);
+    newControl.appendChild(newInputField);
+    newInputFieldContainer.appendChild(newControl2);
+    newControl2.appendChild(newDeleteButton);
+
+    
+}
+
+let buttonAddInput = document.getElementById('add-input-btn');
+buttonAddInput.addEventListener('click',addInput);
 
 /*
 let inputField = document.getElementById('input-field');

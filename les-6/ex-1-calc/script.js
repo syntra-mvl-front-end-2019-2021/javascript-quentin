@@ -2,62 +2,6 @@
 let inputField1 = document.getElementById('input-field-1');
 let inputField2 = document.getElementById('input-field-2');
 
-function realTimeSum(event){
-    inputField1 = parseInt(document.getElementById('input-field-1').value);
-    inputField2 = parseInt(document.getElementById('input-field-2').value);
-    console.log(inputField1,inputField2);
-
-    let result = inputField1 + inputField2;
-    let resultField = document.getElementById('sum-result-container');
-    
-    resultField.innerText = result;
-    /*
-    function sum(event){
-        result = inputField1 + inputField2;
-        resultField = document.getElementById('sum-result-container');
-    
-        resultField.innerText = result;
-    }
-    
-    let buttonSum = document.getElementById('sum-submit-btn');
-    buttonSum.addEventListener('click',sum);
-    */
-}
-
-inputField1.addEventListener('input',realTimeSum);
-inputField2.addEventListener('input',realTimeSum);
-
-function realTimeProduct(event){
-
-    inputField1 = parseInt(document.getElementById('input-field-1').value);
-    inputField2 = parseInt(document.getElementById('input-field-2').value);
-    console.log(inputField1,inputField2);
-
-    let result = inputField1 * inputField2;
-    let resultField = document.getElementById('product-result-container');
-    
-    resultField.innerText = result;
-
-    /*
-    function product(event){
-        inputField1 = parseInt(document.getElementById('input-field-1').value);
-        inputField2 = parseInt(document.getElementById('input-field-2').value);
-        let result = inputField1 * inputField2;
-        let resultField = document.getElementById('product-result-container');
-
-        resultField.innerText = result;
-        //console.log(result);
-    }
-
-    let buttonProduct = document.getElementById('product-submit-btn');
-    buttonProduct.addEventListener('click',product);
-    */
-}
-
-inputField1.addEventListener('input',realTimeProduct);
-inputField2.addEventListener('input',realTimeProduct);
-
-
 let teller = 2;
 
 function addInput(event){
@@ -97,6 +41,88 @@ function addInput(event){
 
 let buttonAddInput = document.getElementById('add-input-btn');
 buttonAddInput.addEventListener('click',addInput);
+
+
+function realTimeSum(event){
+    
+    inputField1 = parseInt(document.getElementById('input-field-1').value);
+    inputField2 = parseInt(document.getElementById('input-field-2').value);
+    console.log(inputField1,inputField2);
+    
+    let result = inputField1 + inputField2;
+    let resultField = document.getElementById('sum-result-container');
+    
+    resultField.innerText = result;
+    
+    function sum(event){
+        result = inputField1 + inputField2;
+        resultField = document.getElementById('sum-result-container');
+    
+        resultField.innerText = result;
+    }
+    
+    let buttonSum = document.getElementById('sum-submit-btn');
+    buttonSum.addEventListener('click',sum);
+    
+}
+
+/*
+function realTimeSum(event){
+    inputField1 = parseInt(document.getElementById('input-field-1').value);
+    inputField2 = parseInt(document.getElementById('input-field-2').value);
+    console.log(inputField1,inputField2);
+
+    let result = inputField1 + inputField2;
+    let resultField = document.getElementById('sum-result-container');
+    
+    resultField.innerText = result;
+    /*
+    function sum(event){
+        result = inputField1 + inputField2;
+        resultField = document.getElementById('sum-result-container');
+    
+        resultField.innerText = result;
+    }
+    
+    let buttonSum = document.getElementById('sum-submit-btn');
+    buttonSum.addEventListener('click',sum);
+    
+}
+*/
+inputField1.addEventListener('input',realTimeSum);
+inputField2.addEventListener('input',realTimeSum);
+
+function realTimeProduct(event){
+
+    inputField1 = parseInt(document.getElementById('input-field-1').value);
+    inputField2 = parseInt(document.getElementById('input-field-2').value);
+    console.log(inputField1,inputField2);
+
+    let result = inputField1 * inputField2;
+    let resultField = document.getElementById('product-result-container');
+    
+    resultField.innerText = result;
+
+    /*
+    function product(event){
+        inputField1 = parseInt(document.getElementById('input-field-1').value);
+        inputField2 = parseInt(document.getElementById('input-field-2').value);
+        let result = inputField1 * inputField2;
+        let resultField = document.getElementById('product-result-container');
+
+        resultField.innerText = result;
+        //console.log(result);
+    }
+
+    let buttonProduct = document.getElementById('product-submit-btn');
+    buttonProduct.addEventListener('click',product);
+    */
+}
+
+inputField1.addEventListener('input',realTimeProduct);
+inputField2.addEventListener('input',realTimeProduct);
+
+
 
 /*
 let inputField = document.getElementById('input-field');

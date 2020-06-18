@@ -1,3 +1,4 @@
+const numberInputContainer = document.querySelector('#input-container');
 
 let inputField1 = document.getElementById('input-field-1');
 let inputField2 = document.getElementById('input-field-2');
@@ -6,7 +7,21 @@ let teller = 2;
 
 function addInput(event){
 
-    let InputFieldContainer = document.createElement('div');
+    const newInputGroup = document.createElement('div');
+    newInputGroup.classList.add('field', 'has-addons', 'number-input-group');
+    newInputGroup.innerHTML += `
+    <div class="control">
+      <input class="input number-input" type="number" step="1" value="0">
+    </div>
+    <div class="control">
+      <a class="button is-danger delete-number-input">
+        X
+      </a>
+    </div>
+  `;
+  numberInputContainer.appendChild(newInputGroup);
+
+    /*let InputFieldContainer = document.createElement('div');
     InputFieldContainer.setAttribute('class','field has-addons number-input-group' )
     let Control = document.createElement('div');
     Control.setAttribute('class', 'control');
@@ -26,7 +41,7 @@ function addInput(event){
     Control.appendChild(InputField);
     InputFieldContainer.appendChild(Control2);
     Control2.appendChild(DeleteButton);
- 
+ */
     let count = document.getElementById('number-count-container');
     count.innerHTML = ++teller;
 
@@ -123,23 +138,6 @@ inputField1.addEventListener('input',realTimeProduct);
 inputField2.addEventListener('input',realTimeProduct);
 
 
-
-/*
-let inputField = document.getElementById('input-field');
-console.log(inputField);
-let inputContainer = document.getElementById('input-container');
-console.log(inputContainer);
-
-function addInput(inputContainer,inputField){
-    console.log(inputContainer);
-    inputContainer.innerHTML = inputContainer + inputField;
-    console.log(inputContainer);
-}
-
-let buttonAddInput = document.getElementById('add-input-btn');
-buttonAddInput.addEventListener('click',addInput);
-
-*/
 
 
 

@@ -72,3 +72,11 @@
   text-align: center;
   margin-top: 5rem;
 }
+
+.display-block{
+  display: block;
+}
+
+.display-none{
+  display: none;
+}

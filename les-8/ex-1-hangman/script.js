@@ -1,4 +1,4 @@
-const randomWords = [
+let randomWords = [
   'condition',
   'bottom',
   'lineage',
@@ -50,12 +50,13 @@ const randomWords = [
   'other',
   'prospect',
 ];
+randomWords = randomWords.map(w => w.toUpperCase());
 const hangManImage = document.querySelector('#image');
 const solutionContainer = document.querySelector('#solution-container');
 const winOrLoseContainer = document.querySelector('#win-lose-container');
 const letterContainer = document.querySelector('#letter-container');
 const letter = document.querySelectorAll('.letter');
-const arrayFromLetters = Array.from(letter);
+const arrayFromLetters = Array.from(letter); 
 
 let gameState = {
   word: [],
@@ -65,7 +66,6 @@ let gameState = {
   won: false,
   lost: false,
 };
-
 
 function getRandomWord(){
   return randomWords[Math.floor(Math.random() * randomWords.length)];
@@ -97,11 +97,13 @@ function resetClasses(){
   });
 }
 
+let randomWord = getRandomWord().split('');
+gameState['word'] = randomWord;
+
 function initGame() {
   // choose a random word > save in gamestate
   // reset gamestate
-  let randomWord = getRandomWord().split('');
-  gameState['word'] = randomWord;
+  
   // update solutionContainer > insert div.solution-letter per letter
   let wordLength = gameState['word'].length;
   solutionLetters(wordLength);
@@ -109,27 +111,32 @@ function initGame() {
   displayNone(winOrLoseContainer);
   // remove success and failed classes from .letter
   resetClasses();
+  console.log(randomWord);
 }
 
-function getValue(el){
-  event.target.value;
+//letter.forEach(letter => letter.addEventListener('click', getLetterValue));
+function getLetterValue() {
+  return this.innerText;
 }
 
 function clickLetter(event) {
   // check if event.target is .letter
-  if (event.target.classList.contains('letter')) {
-    console.log(event.target.value);
-  }else{
-    console.log('hey');
-  }
-
-
+  if (event.target = letter){
+    getLetterValue(letter);
+    for(let i = 0; i < randomWord.length; i++){
+      if(letter == randomWord[i]){
+        console.log('true');
+      }else{
+        console.log(randomWord[i]);
+        console.log('false');
+      }
+    }
+  };
   // check if event.target has success or failed class
   // ---
 
 
-};
-
+}
 letterContainer.addEventListener('click',clickLetter);
 
 // hangManImage.setAttribute('src', 'images/hangman02.png');

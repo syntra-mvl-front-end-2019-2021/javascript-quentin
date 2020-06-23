@@ -135,34 +135,37 @@ function getLetterValue(element) {
 function pushToArray(letter){
   arrayOfLetters.push(letter);
 }
-/*
-function updateGameState(element,target){
 
-  gameTurn + 1; 
 
-  for(let i = 0; i < randomWord.length; i++){
 
-    console.log(gameTurn);
-  }
 
-}
-
-*/
 
 function checkSameLetter(element,target){
   let wordLength = randomWord.length;
   
       for(let i = 0; i < wordLength ; i++){
         if (element == target.innerText){
-          let index = randomWord.indexOf(element);
-          console.log(index);
+
+          showLetter(target.innerText);
+          
           target.classList.add('success');
+
         }else if(element !== target.innerText){
+
           target.classList.add('failed');
+          
         }
       }
     
 }
+
+function showLetter(element){
+  const solutionLetter = document.querySelector('#solution-container').getElementsByTagName('*');
+  for(let i = 0; i < solutionLetter.length;i++){
+    solutionLetter[i].innerHTML = element;
+  }
+}
+
 
 function checkIfLetter(){
   let targetLetter = event.target;
@@ -173,9 +176,7 @@ function checkIfLetter(){
     //updateGameState(letterValue,targetLetter);
     for(let i = 0; i < randomWord.length; i++){
       checkSameLetter(randomWord[i],targetLetter);
-    }
-    
-;
+    };
   };  
 }
 
@@ -191,3 +192,4 @@ letterContainer.addEventListener('click',clickLetter);
 // hangManImage.setAttribute('src', 'images/hangman02.png');
 
 initGame();
+

@@ -56,7 +56,7 @@ const solutionContainer = document.querySelector('#solution-container');
 const winOrLoseContainer = document.querySelector('#win-lose-container');
 const letterContainer = document.querySelector('#letter-container');
 const letter = document.querySelectorAll('.letter');
-const arrayFromLetters = Array.from(letter); 
+let arrayOfLetters = [];
 
 let gameState = {
   word: [],
@@ -66,6 +66,10 @@ let gameState = {
   won: false,
   lost: false,
 };
+
+let gameTurn = gameState['turn'];
+let gameHangman = gameState['hangman'];
+let gameLettersFound = gameState['lettersFound'];
 
 function getRandomWord(){
   return randomWords[Math.floor(Math.random() * randomWords.length)];
@@ -85,27 +89,36 @@ function solutionLetters(number){
 
 }
 
+
 function displayNone(element){
   element.style.display = 'none';
 }
 
 
 function resetClasses(){
-  arrayFromLetters.forEach(element => {
+  letter.forEach(element => {
     element.classList.remove('succes');
     element.classList.remove('failed');
   });
 }
 
 let randomWord = getRandomWord().split('');
-gameState['word'] = randomWord;
 
 function initGame() {
   // choose a random word > save in gamestate
   // reset gamestate
+  let gameState = {
+    word: randomWord,
+    hangman: 1,
+    turn: 1,
+    lettersFound: 0,
+    won: false,
+    lost: false,
+  };
   
+
   // update solutionContainer > insert div.solution-letter per letter
-  let wordLength = gameState['word'].length;
+  let wordLength = randomWord.length;
   solutionLetters(wordLength);
   // empty winOrLoseContainer.innerHTML
   displayNone(winOrLoseContainer);
@@ -115,26 +128,62 @@ function initGame() {
 }
 
 //letter.forEach(letter => letter.addEventListener('click', getLetterValue));
-function getLetterValue() {
-  return this.innerText;
+function getLetterValue(element) {
+  return element.innerText;
 }
 
-function clickLetter(event) {
-  // check if event.target is .letter
-  if (event.target = letter){
-    getLetterValue(letter);
-    for(let i = 0; i < randomWord.length; i++){
-      if(letter == randomWord[i]){
-        console.log('true');
-      }else{
-        console.log(randomWord[i]);
-        console.log('false');
-      }
-    }
-  };
-  // check if event.target has success or failed class
-  // ---
+function pushToArray(letter){
+  arrayOfLetters.push(letter);
+}
+/*
+function updateGameState(element,target){
 
+  gameTurn + 1; 
+
+  for(let i = 0; i < randomWord.length; i++){
+
+    console.log(gameTurn);
+  }
+
+}
+
+*/
+
+function checkSameLetter(element,target){
+  let wordLength = randomWord.length;
+  
+      for(let i = 0; i < wordLength ; i++){
+        if (element == target.innerText){
+          let index = randomWord.indexOf(element);
+          console.log(index);
+          target.classList.add('success');
+        }else if(element !== target.innerText){
+          target.classList.add('failed');
+        }
+      }
+    
+}
+
+function checkIfLetter(){
+  let targetLetter = event.target;
+  // check if event.target is .letter
+  if (targetLetter.matches('.letter')){
+
+    pushToArray(targetLetter.value);
+    //updateGameState(letterValue,targetLetter);
+    for(let i = 0; i < randomWord.length; i++){
+      checkSameLetter(randomWord[i],targetLetter);
+    }
+    
+;
+  };  
+}
+
+
+
+function clickLetter(event) {
+  
+  checkIfLetter();
 
 }
 letterContainer.addEventListener('click',clickLetter);

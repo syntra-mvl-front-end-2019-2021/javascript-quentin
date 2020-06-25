@@ -146,7 +146,7 @@ function checkSameLetter(element,target){
       for(let i = 0; i < wordLength ; i++){
         if (element == target.innerText){
 
-          showLetter(target.innerText);
+          showLetter(target.innerText, randomWord);
           
           target.classList.add('success');
 
@@ -159,10 +159,14 @@ function checkSameLetter(element,target){
     
 }
 
-function showLetter(element){
+function showLetter(element, number){
   const solutionLetter = document.querySelector('#solution-container').getElementsByTagName('*');
-  for(let i = 0; i < solutionLetter.length;i++){
-    solutionLetter[i].innerHTML = element;
+  for(let i = 0; i < element.length ;i++){
+    //solutionLetter[i].innerHTML = element;
+
+    for( let j = 0 ; j < number.length ; j++){
+      solutionLetter[i].innerText = element;
+    };
   }
 }
 

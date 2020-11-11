@@ -66,14 +66,27 @@ function sumAllNumbers(sum, num){
 const reduceTestArray = [1,2,3,4,5,6];
 
 Array.prototype.myReduce = function(callbackFunction, initial){
-    
+
+    let accumulator = initial;
     for (let i = 0; i < this.length; i++){
-        let newValue = callbackFunction(this[i]) ;
-        initial = newValue + initial;
-        return initial;
+        const returnVal = callbackFunction(accumulator,this[i])
+        accumulator = returnVal;
     }
+
+    return accumulator;
 }
 
 
 console.log(reduceTestArray.reduce(sumAllNumbers,0));
 console.log('myReduce ' + reduceTestArray.myReduce(sumAllNumbers,0));
+
+function highestNumber(accumulator,arrayVal){
+    
+    if ( accumulator > arrayVal ){
+        arrayVal = accumulator;
+    }
+    return arrayVal;
+}
+
+console.log('reduce ' + reduceTestArray.reduce(highestNumber,0));
+console.log('myReduce ' + reduceTestArray.myReduce(highestNumber,0));

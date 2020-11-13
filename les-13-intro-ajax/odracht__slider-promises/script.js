@@ -1,39 +1,64 @@
-/*
-function resolve(val){
-  newPromise.state = 'resolved';
-  newPromise.result = val;
-}
-*/
-/*
-function newPromiseCallback(resolve, reject){
-  resolve('hello promise');
-}
+const sliderContainer = document.createElement('div');
+const prevBtn = document.createElement('div');
+const nextBtn = document.createElement('div');
+const chirstmasImages = ['https://images.unsplash.com/photo-1545048702-79362596cdc9?ixlib=rb-1.2.1&w=1000&q=80','https://images.unsplash.com/photo-1543598098-622a5e218f43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80','https://images.unsplash.com/photo-1479722842840-c0a823bd0cd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80','https://images.unsplash.com/photo-1511731357620-952d10f3234c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'];
 
-let newPromise = new Promise(newPromiseCallback);
+sliderContainer.classList.add('sliderContainer');
+prevBtn.classList.add('arrow-left');
+nextBtn.classList.add('arrow-right');
 
-console.log(newPromise.result);
+nextBtn.addEventListener('click',nextSlide);
+prevBtn.addEventListener('click',prevSlide)
 
-function newPromiseResolved(result){
-  console.log(result);
+let sliderInfo = {
+  sliderElement: sliderContainer,
+  currentSlide : 0,
 }
 
-function newPromiseError(error){
-  console.log(error);
+function createSlider(){
+  let slider = document.querySelector('.slider');
+  slider.appendChild(sliderContainer);
+  slider.appendChild(prevBtn);
+  slider.appendChild(nextBtn);
 }
 
-newPromise.catch(newPromiseResolved, newPromiseError);
-newPromise.finally();*/
-
-let promise = new Promise(function(resolve, reject) {
-  resolve(1);
-
-  setTimeout(() => resolve(2), 1000);
-});
-
-promise.then(alert);
-
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function getSliderItemWidth(){
+  const sliderItem = document.querySelector('.slider-item');
+  return sliderItem.clientWidth;
 }
 
-delay(3000).then(() => alert('runs after 3 seconds'));
+
+function nextSlide(event){
+  const itemWidth = getSliderItemWidth();
+
+
+  sliderInfo.currentSlide++;
+  sliderInfo.sliderElement.style.left = -1 * sliderInfo.currentSlide * itemWidth + 'px';
+}
+
+function prevSlide(event){
+  const itemWidth = getSliderItemWidth();
+  
+  if (sliderInfo.currentSlide === 1){
+    prevBtn.classList.add('hide');
+  }
+    
+  sliderInfo.currentSlide--;
+
+  sliderInfo.sliderElement.style.left = -1 * sliderInfo.currentSlide * itemWidth + 'px';
+}
+
+Promise.all(chirstmasImages).then(function(urls){
+  createSlider();
+  for ( let i=0 ; i < urls.length ; i++){
+      let image = document.createElement('img');
+      image.setAttribute('src', urls[i]);
+      image.classList.add('slider-item');
+      sliderContainer.appendChild(image);
+  }
+}).catch(function(urls){
+  console.log("Error loading some images: " + urls)
+})
+
+
+

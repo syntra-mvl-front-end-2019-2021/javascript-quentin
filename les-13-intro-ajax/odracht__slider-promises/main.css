@@ -23,6 +23,7 @@ body{
 .sliderContainer{
   width: 99999px;
   position: absolute;
+  left: -1000px;
 }
 
 .arrow-left {

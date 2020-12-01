@@ -10,9 +10,8 @@ body{
   width: 1000px;
   height: 500px;
   
-  position: absolute;
-  left: calc(50% - ( 1000px / 2));
-  top: calc(50% - ( 500px / 2 ));
+  position: relative;
+  margin: auto;
   overflow:hidden;
 }
 
@@ -23,7 +22,6 @@ body{
 .sliderContainer{
   width: 99999px;
   position: absolute;
-  left: -1000px;
 }
 
 .arrow-left {

@@ -1,0 +1,108 @@
+*{
+  box-sizing: border-box;
+}
+
+body,html{
+  margin: 0;
+  padding:0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #ddf2ff70;
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+h3{
+  font-size: .7em;
+}
+
+.post_wrapper{
+  position: relative;
+  text-align: center;
+  width: 30%;
+  padding: 1em;
+  margin: 0.5em;
+  box-shadow: 0 8px 6px -6px black;
+  background-color: #fff;
+}
+
+.post_wrapper input{
+  width: 80%;
+  height: 3em;
+  margin: 0.7em;
+  padding: 1em;
+  border: solid 1px rgb(197, 197, 197);
+  border-radius: 2px;
+  outline: none;
+}
+
+.post_wrapper input:focus{
+  border: solid 1px rgb(255, 118, 118);
+  border-radius: 2px;
+  
+}
+
+.post_wrapper .post__button-delete{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: red;
+}
+
+.post_wrapper img{
+  width: 25px;
+  color: red;
+  position: absolute;
+  top: 0px;
+  right: 35px;
+}
+
+.post__button-delete span{
+  display: block;
+  position: relative;
+  width: 65%;
+  height: 3px;
+  top: 11px;
+  left: 17%;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.post__button-add{
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+  padding: 0;
+  border: none;
+  background-color: rgb(0, 153, 255);
+  border-radius: 5px;
+  position: relative;
+}
+
+.post__button-add span{
+  position: absolute;
+}
+
+.post__button-add span:first-child{
+  width: 5px;
+  height: 20px;
+  background-color: #fff;
+  top: calc( (35px - 20px) / 2);
+  left: 15px;
+  border-radius: 2px;
+} 
+
+.post__button-add span:nth-child(2){
+  height: 5px;
+  width: 20px;
+  background-color: #fff;
+  left: calc( (35px - 20px) / 2);
+  top: 15px;
+  border-radius: 2px;
+}

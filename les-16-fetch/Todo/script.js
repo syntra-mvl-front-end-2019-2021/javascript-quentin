@@ -86,8 +86,6 @@ function printPost(id,name,bodytext,date){
       });
   }
 
-  
-
   function updateTodo(){
     console.log($postBodyText);
     let $inputNewValue = document.createElement('input');

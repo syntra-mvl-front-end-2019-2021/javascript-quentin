@@ -1,0 +1,100 @@
+body,html{
+  width: 100vw;
+  height: 100%;
+  background-color: rgb(245, 245, 245);
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container{
+  width: 1000px;
+  margin:auto;
+}
+
+button{
+  color: white;
+  border: none;
+  padding: 1em;
+  border-radius: 5px ;
+}
+
+.button-add{
+  background-color: rgb(73, 85, 248);
+}
+
+.button-update{
+  background-color: rgb(69, 226, 55);
+}
+
+.button-delete{
+  background-color: rgb(247, 35, 35);
+}
+
+
+.modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content{
+  background-color: #fff;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  left: calc(50vw - (150px + 2em));
+  top: calc(50vh - (150px + 2em));
+  padding: 2em;
+  border-radius: 15px;
+}
+
+.modal-content input[type = "text"]{
+  width:calc(100% - 2em);
+  padding: .5em;
+  font-size: 1.4em;
+  border-radius: 5px;
+  border: 1px grey solid;
+}
+
+.modal-content input[type = "submit"]{
+  margin-top: 1em;
+  padding: .5em;
+  font-size: 1.4em;
+  background-color: rgb(73, 85, 248);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-content .modal-close{
+  background-color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-top-right-radius: 15px;
+}
+
+.modal-content .modal-close span{
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  left: 10px;
+  top: 18px;
+  background-color: #fff;
+}
+
+.modal-content .modal-close span:first-child{
+  transform: rotate(45deg);
+}
+
+.modal-content .modal-close span:last-child{
+  transform: rotate(-45deg);
+}

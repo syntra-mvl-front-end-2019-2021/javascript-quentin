@@ -9,6 +9,10 @@ body,html{
   margin:auto;
 }
 
+li{
+  list-style-type: none;
+}
+
 button{
   color: white;
   border: none;
@@ -61,7 +65,7 @@ button{
   border: 1px grey solid;
 }
 
-.modal-content input[type = "submit"]{
+.modal-content button{
   margin-top: 1em;
   padding: .5em;
   font-size: 1.4em;
@@ -97,4 +101,33 @@ button{
 
 .modal-content .modal-close span:last-child{
   transform: rotate(-45deg);
+}
+
+
+
+
+.loading {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+}
+.loading:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loadingkey 1.2s linear infinite;
+}
+@keyframes loadingkey {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

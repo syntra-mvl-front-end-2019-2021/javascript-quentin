@@ -22,13 +22,11 @@
     <!-- Modal content -->
     <div class="modal-content">
       <form name="todo-form" id="todo-form">
+        <input type="hidden" name="id">
         <h1>New to do</h1>
-        <div class="modal-close">
-          <span></span>
-          <span></span>
-        </div>
-        <input type="text" placeholder="Type here">
-        <input type="submit" value="Send">
+        <input name="description" type="text" placeholder="Type here">
+        <button class="reset-btn" type="reset-btn">Cancel</button>
+        <button  class="submit-btn" type="submit" >Send</button>
       </form>
     </div>
   

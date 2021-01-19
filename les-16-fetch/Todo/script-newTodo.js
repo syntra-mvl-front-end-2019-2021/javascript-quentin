@@ -3,6 +3,7 @@ const $buttonAddTodo = document.querySelector('.button-add');
 const $modal = document.getElementById('myModal');
 const $modalResetBtn = document.querySelector('.reset-btn');
 const $todoForm = document.forms['todo-form'];
+const $errorMessage = document.querySelector('.modal__error-message');
 
 let allTodoItems = {};
 
@@ -30,6 +31,7 @@ function fetchAllTodos() {
     })
     .catch(function(error){
       console.error(error);
+      showErrorMessage(error.message);
       $listContainer.classList.remove('loading');
     });
 }
@@ -145,7 +147,6 @@ function saveTodoList(todoItems,clear){
   })
 }
 
-
 function openModal(todoItem){
   $modal.style.display = 'block';
   console.log($todoForm.elements);
@@ -159,7 +160,6 @@ function openModal(todoItem){
 function closeModal(){
   $modal.style.display = 'none';
 }
-
 
 function deleteBtnOnClick(event){
   const $listItem = event.target.closest('.content-list__item');
@@ -182,11 +182,22 @@ function listContainerClick(event){
   }
 }
 
+function showErrorMessage(message) {
+  $errorMessage.textContent = message;
+}
+
+function emptyErrorMessage(message){
+
+}
+
 function submitTodoForm(event){
   event.preventDefault(event);
   const id = $todoForm.elements.id.value;
   const body = todoItemFromForm();
 
+  if(!body.description){
+    showErrorMessage('Please enter a description.');
+  }
   if(id){
     updateTodo(id,body);
   }else{

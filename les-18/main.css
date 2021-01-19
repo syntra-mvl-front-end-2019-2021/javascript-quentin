@@ -1,0 +1,40 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.screen{
+  width: 500px;
+}
+
+.buttons{
+  display: flex;
+}
+
+button{
+  margin: 0;
+  background-color: black;
+}
+
+.button__numbers{
+  flex: 3;
+}
+
+.buttons__math{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+body{
+  background-color: grey;
+}
+.button__number{
+  width: 33%;
+}
+
+.screen__line-one,.screen__line-two{
+  height: 2rem;
+  background-color: white;
+  color: black;
+  padding-left: 1rem;
+}
+

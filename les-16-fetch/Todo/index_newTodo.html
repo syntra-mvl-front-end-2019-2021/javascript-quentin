@@ -7,30 +7,52 @@
   <title>Document</title>
 </head>
 <body>
-  <section class="container"> 
-    <h1>To do:</h1>
-    <button class="button-add">Add To do</button>
-    <div class="content">
-      <ul class="content-list">
-        
-      </ul>
 
-    </div>
-  </section>
-  <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <form name="todo-form" id="todo-form">
-        <input type="hidden" name="id">
-        <h1>New to do</h1>
-        <input name="description" type="text" placeholder="Type here">
-        <button class="reset-btn" type="reset-btn">Cancel</button>
-        <button  class="submit-btn" type="submit" >Send</button>
-      </form>
-    </div>
+  <div id="vue-app">
+    <h1>{{ title }}</h1>
+    <section class="container"> 
+      <button class="button-add" @click="addTodo">Add To do</button>
+      <div class="content">
+        <div :class="{ 'content-list' : true, 'loading' : loadingList}">
+          <div
+            v-for="(todoItem, index) in todoItems"
+            ::key="'todoItem_' + todoItem.id"
+            class="list-item list-item--done"
+            >
+            <p class="list-item__description">{{todoItem.description}}</p>
+            <div class="actions">
+              <button class="button-update" @click="updateTodo(todoItem)">Update</button> 
+              <button class="button-delete" @click="deleteTodo(todoItem.id,index)"> Delete</button>
+            </div>
+          </div>
+        </div>
   
+      </div>
+    </section>
+    <div id="myModal" :class="{
+        'modal' : true, 
+        'modal-background--active' : modalOpen,
+        'loading' : loadingForm,
+      }">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <form name="todo-form" id="todo-form" @submit.prevent="submitTodoForm">
+          <input type="hidden" name="id" v-model="activeTodoItem.id">
+          <input type="checkbox" name="done" value="true" v-model="activeTodoItem.done">
+          <h1>New to do</h1>
+          <input name="description" type="text" placeholder="Type here" v-model="activeTodoItem.description">
+          <div class="modal__error-message">
+            {{errorMessage}}
+          </div>
+          <button class="reset-btn" type="button" @click="modalOpen = false" >Cancel</button>
+          <button  class="submit-btn" type="submit" >Send</button>
+        </form>
+      </div>
+    
+    </div>
   </div>
-<script src="script-newTodo.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="todoVue.js"></script>
 </body>
 </html>

@@ -46,6 +46,10 @@ button{
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.modal-background--active{
+  display: block;
+}
+
 .modal-content{
   background-color: #fff;
   position: absolute;
@@ -103,7 +107,10 @@ button{
   transform: rotate(-45deg);
 }
 
-
+.modal__error-message{
+  color: red;
+  margin:2em 0;
+}
 
 
 .loading {

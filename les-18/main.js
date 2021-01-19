@@ -16,41 +16,28 @@ const App = {
       }
       this.lineTwo = parseInt( '' + this.lineTwo + number);
     },
-    sum(){
-      let result = this.lineOne + this.lineTwo; 
-      this.results.push(result);
-      return result;
+    sum() {
+      return this.lineOne + this.lineTwo;
     },
-    minus(){
-      let result = this.lineOne - this.lineTwo;
-      this.results.push(result);
-      return result;
+    product() {
+      return this.lineOne * this.lineTwo;
     },
-    divide(){
-      let result = this.lineOne / this.lineTwo;
-      this.results.push(result);
-      return result;
+    minus() {
+      return this.lineOne - this.lineTwo;
     },
-    product(){
-      let result = this.lineOne * this.lineTwo;
-      this.results.push(result);
-      return result;
+    divide() {
+      return this.lineOne / this.lineTwo;
     },
-    root(){
-      let result = Math.sqrt( this.lineTwo );
-      this.results.push(result);
-      return result;
+    root() {
+      return Math.pow(this.lineOne, 1 / this.lineTwo);
     },
-    power(){
-      let result = Math.pow(this.lineOne, this.lineTwo);
-      this.results.push(result);
-      return result;
+    power() {
+      return Math.pow(this.lineOne, this.lineTwo);
     },
     clear(){
       this.lineOne = null;
       this.lineTwo = null;
       this.symbol = '';
-      return;
     },
     calculate(){
       if(
@@ -60,30 +47,86 @@ const App = {
         ){
         return;
       }
-      switch (this.symbol){
-        case '+' : this.lineTwo = this.sum();
-        break;
-        case '-' : this.lineTwo = this.minus();
-        break;
-        case '/' : this.lineTwo = this.divide();
-        break;
-        case '*' : this.lineTwo = this.product();
-        break;
-        case '√' : this.lineTwo = this.root();
-        break;
-        case 'xn' : this.lineTwo = this.power();
-        break;
+      switch (this.symbol) {
+        case '+':
+          result = this.sum();
+          break;
+        case '*':
+          result = this.product();
+          break;
+        case '-':
+          result = this.minus();
+          break;
+        case '/':
+          result = this.divide();
+          break;
+        case '√':
+          result = this.root();
+          break;
+        case '^':
+          result = this.power();
+          break;
+        case '=':
+        case 'Enter':
+          this.calculate();
+          break;
+        case 'c':
+          this.clear();
+          break;
       }
+
+      parseFloat(result.toFixed(2));
+
+      this.addHistoryItem(result);
+      this.lineTwo = result;
       this.lineOne = null;
       this.symbol = '';
     },
+    addHistoryItem(result) {
+      this.results.push(
+        `${this.lineOne} ${this.symbol} ${this.lineTwo} = ${result}`
+      );
+    },
     selectSymbol(symbol){
+
       console.log(this.symbol);
       this.calculate();
+
       this.lineOne = this.lineTwo;
       this.symbol = symbol;
       this.lineTwo = null;
     },
+    backspace(){
+
+      if (this.lineTwo === null || this.lineTwo.length === 0){
+        return;
+      }
+
+      let subStr = this.lineTwo.toString().slice(0,-1);
+      if(subStr.length === 0){
+        this.lineTwo = null;
+        return;
+      }
+
+      this.lineTwo = parseFloat(subStr);
+    },
+    keyDown(event){
+      switch (event.key) {
+        case '*':
+          this.selectSymbol('*');
+          break;
+        case '/':
+          this.selectSymbol('/');
+          break;
+        case '-':
+          this.selectSymbol('-');
+          break;
+        case '+':
+          event.preventDefault();
+          this.selectSymbol('-');
+          break;
+      }
+    }
   },
 };
 

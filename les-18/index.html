@@ -20,6 +20,7 @@
       <div class="screen">
         <div class="screen__line-one">{{lineOne === null ? '' : lineOne}} <span>{{symbol}}</span></div>
         <div class="screen__line-two">{{lineTwo === null ? '' : lineTwo}}</div>
+        <input type="number" @keydown="keydown" v-model="lineTwo" />
         <div class="buttons">
           <div class="button__numbers">
             <button class="button__number" @click="addNumber(0)" >0</button>
@@ -41,6 +42,7 @@
             <button class="buttons__math-item" @click="selectSymbol('*')">*</button>
             <button class="buttons__math-item" @click="selectSymbol('√')">&radic;</button>
             <button class="buttons__math-item" @click="selectSymbol('xn')">POW</button>
+            <button class="buttons__math-item" @click="backspace">del</button>
             <button class="buttons__math-item" @click="calculate">=</button>
           </div>
         </div>
